@@ -446,7 +446,7 @@ footer {
   .form-field select, 
   .form-field input, 
   .form-field textarea {
-    font-size: 26px; /* Максимальний текст у полях для iPhone */
+    font-size: 24px; /* Максимальний текст у полях для iPhone */
     padding: 18px;
     border-radius: 15px;
   }
@@ -498,7 +498,11 @@ footer {
   }
   
   .deadline-box p {
-    font-size: 29px;
+    font-size: 24px; /* Максимально помітний текст на iPhone */
+  }
+
+  .deadline-note {
+    font-size: 18px;
   }
 
   .dresscode-gallery img {
@@ -556,8 +560,9 @@ footer {
 
 .deadline-box p {
   margin: 0;
-  font-size: 14px;
-  color: #444;
+  font-size: 20px; /* Значно більший шрифт */
+  color: #333;
+  line-height: 1.4;
 }
 
 .deadline-box strong {
@@ -566,8 +571,8 @@ footer {
 }
 
 .deadline-note {
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 12px;
+  font-size: 16px; /* Трохи більша примітка */
   color: #777;
   font-style: italic;
 }
