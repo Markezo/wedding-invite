@@ -127,9 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+    let delay = 0;
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !entry.target.classList.contains('visible')) {
+        // Додаємо невелику затримку для послідовної появи, якщо кілька елементів з'являються одночасно
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
+        delay += 150; // 150ms між кожним елементом
       }
     });
   }, observerOptions);

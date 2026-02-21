@@ -1,16 +1,15 @@
 /* Базові стилі */
 body {
   font-family: 'Montserrat', sans-serif;
-  background-image: url('IMG_3570.jpg');
-  background-size: 100%;
-  background-attachment: fixed;
-  background-position: calc(50% + 90px) calc(50% );
+  background-image: url('IMG_35701.jpeg');
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   color: #333;
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  font-size: 18px;
+  font-size: clamp(18px, 2vw, 21px); /* Адаптивний базовий шрифт */
 }
 
 /* Hero */
@@ -27,8 +26,9 @@ body {
 
 .hero h1 {
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(158px, 10vw, 80px); /* Адаптивний розмір */
+  font-size: clamp(75px, 16vw, 180px); /* Збільшений та адаптивний */
   margin: 0;
+  padding: 0 20px;
 }
 
 .hero-date {
@@ -116,7 +116,7 @@ body {
 /* Анімації та роздільники */
 h2 {
   font-family: 'Great Vibes', cursive;
-  font-size: 55px;
+  font-size: clamp(55px, 8vw, 90px); /* Збільшені заголовки розділів */
   text-align: center;
   margin-bottom: 5px;
   color: #333;
@@ -151,29 +151,31 @@ h2 {
 label {
   display: block;
   font-weight: 500;
-  margin-top: 20px;
-  font-size: 17px;
+  margin-top: 25px;
+  font-size: 24px; /* Ще більші лейбли */
 }
 
 select, input, textarea {
   font-family: 'Montserrat', sans-serif;
   width: 100%;
-  padding: 12px;
+  padding: 15px; /* Більший паддінг */
   border: 1px solid #eee;
-  border-radius: 8px;
+  border-radius: 12px;
   background: #f9f9f9;
-  margin-top: 8px;
+  margin-top: 10px;
+  font-size: 20px; /* Більший текст в полях */
 }
 
 button {
-  background: #000; /* Можна змінити на #673ab7, якщо хочете колір */
+  background: #000;
   color: #fff;
   border: none;
-  padding: 15px;
+  padding: 20px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
   font-weight: 600;
-  margin-top: 30px;
+  font-size: 24px; /* Дуже велика кнопка */
+  margin-top: 40px;
   cursor: pointer;
   transition: opacity 0.3s;
 }
@@ -192,8 +194,9 @@ footer {
 /* Scroll reveal classes */
 .fade-in, .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.8s ease-out;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  will-change: opacity, transform;
 }
 
 .visible {
@@ -311,16 +314,16 @@ footer {
 }
 
 .detail-content h3 {
-  margin: 0 0 8px 0;
-  font-size: 25px;
+  margin: 0 0 10px 0;
+  font-size: clamp(30px, 4vw, 34px); /* Більші заголовки деталей */
   font-weight: 600;
   color: #000;
 }
 
 .detail-content p {
-  margin: 4px 0;
-  color: #555555;
-  font-size: 16px;
+  margin: 6px 0;
+  color: #444;
+  font-size: clamp(27px, 2vw, 20px); /* Більший текст деталей */
 }
 
 .detail-content a {
@@ -376,33 +379,142 @@ footer {
 
 .contact-card {
   background: #faf7fb;
-  padding: 20px;
+  padding: 12px;
   border-radius: 14px;
 }
 
 .contact-card h3 {
   margin: 0 0 8px;
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .contact-card p {
   margin: 0;
-  font-size: 16px;
+  font-size: 12px;
   color: #555;
 }
 
 .contacts-note {
-  font-size: 17px;
+  font-size: 12px;
   color: #777;
   margin-top: 10px;
   line-height: 1.5;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
+/* === Mobile Adaptation === */
+@media (max-width: 768px) {
+  body {
+    font-size: 20px; /* Значно більший базовий шрифт для iPhone */
+    background-attachment: scroll; 
+  }
+
+  .hero {
+    height: 90vh; 
+  }
+
+  .hero h1 {
+    font-size: 75px; /* Ще більші імена */
+    line-height: 1.05;
+  }
+
+  .hero-date {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 52px; /* Потужні заголовки */
+    margin-bottom: 25px;
+  }
+
+  .details-section, .rsvp-section, .contacts-section {
+    width: 94%;
+    margin: 25px auto;
+    padding: 45px 20px;
+    border-radius: 28px;
+  }
+
+  .form-field {
+    margin-bottom: 15px;
+  }
+
+  .form-field label {
+    font-size: 28px; /* Максимальні лейбли для iPhone */
+    margin-top: 25px;
+  }
+
+  .form-field select, 
+  .form-field input, 
+  .form-field textarea {
+    font-size: 26px; /* Максимальний текст у полях для iPhone */
+    padding: 18px;
+    border-radius: 15px;
+  }
+
+  button {
+    font-size: 28px; /* Максимальна кнопка для iPhone */
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  .detail-row {
+    padding: 35px 25px;
+    margin-bottom: 30px;
+  }
+
+  .detail-icon {
+    font-size: 45px; /* Більші іконки */
+    margin-bottom: 15px;
+  }
+
+  .detail-content h3 {
+    font-size: 28px; /* Більші підзаголовки */
+  }
+
+  .detail-content p {
+    font-size: 19px; /* Більший текст в картках */
+    line-height: 1.5;
+  }
+
   .contacts-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-card h3 {
+    font-size: 22px;
+  }
+
+  .contact-card p {
+    font-size: 20px;
+  }
+
+  .rsvp-section {
+    padding: 40px 25px;
+  }
+
+  .deadline-box {
+    padding: 30px 20px;
+  }
+  
+  .deadline-box p {
+    font-size: 19px;
+  }
+
+  .dresscode-gallery img {
+    flex: 0 0 160px; /* Великі картинки */
+    width: 160px;
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 62px;
+  }
+  
+  .dresscode-colors {
+    font-size: 17px;
   }
 }
 
@@ -444,7 +556,7 @@ footer {
 
 .deadline-box p {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   color: #444;
 }
 
