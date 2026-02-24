@@ -188,7 +188,7 @@ footer {
   padding: 40px;
   text-align: center;
   font-style: italic;
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Scroll reveal classes */
@@ -593,7 +593,7 @@ footer {
   cursor: pointer;
   margin-top: 10px;
   padding: 0;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .dresscode-toggle:hover {
