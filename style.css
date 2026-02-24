@@ -385,18 +385,18 @@ footer {
 
 .contact-card h3 {
   margin: 0 0 8px;
-  font-size: 14px;
+  font-size: 24px;
   font-weight: 600;
 }
 
 .contact-card p {
   margin: 0;
-  font-size: 12px;
+  font-size: 22px;
   color: #555;
 }
 
 .contacts-note {
-  font-size: 12px;
+  font-size: 24px;
   color: #777;
   margin-top: 10px;
   line-height: 1.5;
@@ -498,11 +498,11 @@ footer {
   }
   
   .deadline-box p {
-    font-size: 24px; /* Максимально помітний текст на iPhone */
+    font-size: 28px; /* Максимально помітний текст на iPhone */
   }
 
   .deadline-note {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .dresscode-gallery img {
