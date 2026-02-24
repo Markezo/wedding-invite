@@ -185,10 +185,16 @@ button:hover {
 }
 
 footer {
-  padding: 40px;
+  padding: 100px 20px;
   text-align: center;
   font-style: italic;
+  font-size: clamp(26px, 5vw, 44px); /* Ще трохи більший */
   color: #000000;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+footer p {
+  margin: 0;
 }
 
 /* Scroll reveal classes */
