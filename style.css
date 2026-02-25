@@ -1,15 +1,23 @@
 /* Базові стилі */
 body {
   font-family: 'Montserrat', sans-serif;
-  background-image: url('IMG_35701.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   color: #333;
   margin: 0;
   padding: 0;
   line-height: 1.6;
   font-size: clamp(18px, 2vw, 21px); /* Адаптивний базовий шрифт */
+}
+
+/* Надійний фіксований фон для всіх девайсів (включаючи iOS) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('IMG_35701.jpeg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* Hero */
@@ -412,7 +420,6 @@ footer p {
 @media (max-width: 768px) {
   body {
     font-size: 20px; /* Значно більший базовий шрифт для iPhone */
-    background-attachment: scroll; 
   }
 
   .hero {
