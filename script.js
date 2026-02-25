@@ -163,17 +163,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxImg = lightbox.querySelector('img');
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
-  
+
   const galleryImages = Array.from(document.querySelectorAll('.dresscode-gallery img'));
   let currentIndex = 0;
 
   function showImage(index) {
     if (index < 0) index = galleryImages.length - 1;
     if (index >= galleryImages.length) index = 0;
-    
+
     currentIndex = index;
     lightboxImg.style.opacity = '0';
-    
+
     // Плавна зміна фото
     setTimeout(() => {
       lightboxImg.src = galleryImages[currentIndex].src;
