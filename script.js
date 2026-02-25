@@ -158,26 +158,89 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Lightbox для dresscode
+  // Lightbox для dresscode з каруселлю та свайпами
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = lightbox.querySelector('img');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  
+  const galleryImages = Array.from(document.querySelectorAll('.dresscode-gallery img'));
+  let currentIndex = 0;
 
-  document.querySelectorAll('.dresscode-gallery img').forEach(img => {
-    img.addEventListener('click', () => {
+  function showImage(index) {
+    if (index < 0) index = galleryImages.length - 1;
+    if (index >= galleryImages.length) index = 0;
+    
+    currentIndex = index;
+    lightboxImg.style.opacity = '0';
+    
+    // Плавна зміна фото
+    setTimeout(() => {
+      lightboxImg.src = galleryImages[currentIndex].src;
+      lightboxImg.style.opacity = '1';
+    }, 150);
+  }
+
+  galleryImages.forEach((img, index) => {
+    img.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = index;
       lightboxImg.src = img.src;
+      lightboxImg.style.opacity = '1';
       lightbox.classList.add('active');
     });
   });
 
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showImage(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showImage(currentIndex + 1);
+  });
+
   lightbox.addEventListener('click', () => {
     lightbox.classList.remove('active');
-    // Wait for transition to finish before clearing src to avoid flicker if desired,
-    // but clearing it immediately is usually fine if the fade is fast.
     setTimeout(() => {
       if (!lightbox.classList.contains('active')) {
         lightboxImg.src = '';
       }
     }, 400);
+  });
+
+  // Логіка свайпів для мобільних пристроїв
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, { passive: true });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Свайп вліво -> наступне фото
+      showImage(currentIndex + 1);
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+      // Свайп вправо -> попереднє фото
+      showImage(currentIndex - 1);
+    }
+  }
+
+  // Підтримка клавіш
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+    if (e.key === 'Escape') lightbox.classList.remove('active');
   });
 
 
