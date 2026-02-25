@@ -29,7 +29,6 @@ body::before {
   justify-content: center;
   color: white;
   text-align: center;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.6);
 }
 
 .hero h1 {
@@ -198,7 +197,6 @@ footer {
   font-style: italic;
   font-size: clamp(26px, 5vw, 44px); /* Ще трохи більший */
   color: #000000;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 footer p {
